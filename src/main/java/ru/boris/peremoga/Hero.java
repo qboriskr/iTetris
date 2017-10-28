@@ -9,4 +9,12 @@ public class Hero {
     }
 
     private Point currentPoaition;
+
+    public Point getCurrentPosition() {
+        return new Point(currentPoaition);
+    }
+
+    public void setCurrentPosition(Point newPoint) {
+        currentPoaition = newPoint;
+    }
 }
