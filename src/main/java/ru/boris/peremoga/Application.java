@@ -31,13 +31,16 @@ public class Application {
         QLearning agent = new QLearning(domain, 0.99, new SimpleHashableStateFactory(), 1.0, 1.0);
 
         Episode ep = null;
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 80; i++) {
             Hero hero = new Hero(new Point(1, 8));
             world.setHero(hero);
             ep = agent.runLearningEpisode(env);
-            System.out.println(ep.actionString());
+            //System.out.println(ep.actionString());
             env.resetEnvironment();
-            if (i > 100) {
+
+                System.out.println(i + "," + ep.numTimeSteps());
+
+            if (i>5 && i%2==0) {
                 play(world, ep);
             }
         }

@@ -353,7 +353,7 @@ public class World implements DomainGenerator {
                 nx = ax;
                 ny = ay;
             } else if (map[ny][nx] == 3) {
-                System.out.println("Exit found!");
+               // System.out.println("Exit found!");
             }
 
             GridAgent nagent = gws.touchAgent();

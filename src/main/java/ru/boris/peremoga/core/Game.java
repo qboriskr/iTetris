@@ -29,7 +29,7 @@ public class Game {
 
     public void checkState() {
         if (w.getAreaItem(w.getHero().getCurrentPosition()) == 3) {
-            System.out.println("Exit found!");
+           // System.out.println("Exit found!");
             finished = true;
         }
     }
