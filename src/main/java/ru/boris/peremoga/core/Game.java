@@ -61,7 +61,7 @@ public class Game {
                 int y = wy + windowCorner.y;
                 int x = wx + windowCorner.x;
 
-                ObjectId obj = getObjectBy(w.getAreaItem(y, x));
+                ObjectId obj = getObjectBy(w.getAreaItem(x, y));
                 if (currentPosition.x == x && currentPosition.y == y) obj = ObjectId.HUMAN_CIVILIAN;
                 ui.draw(wy, wx, obj);
             }
