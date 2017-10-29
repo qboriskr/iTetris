@@ -23,7 +23,7 @@ public class Application {
             game.show();
             game.checkState();
             game.tick();
-            Thread.sleep(1);
+            Thread.sleep(100);
         }
     }
 
