@@ -206,6 +206,10 @@ public class World implements DomainGenerator {
         return copy;
     }
 
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
 
     public static class WorldModel implements FullStateModel {
 
@@ -413,7 +417,8 @@ public class World implements DomainGenerator {
         TerminalFunction tf = this.tf;
 
         if(rf == null){
-            rf = new UniformCostRF();
+            // rf = new UniformCostRF();
+            rf = new CustomCostRF(this);
         }
 
         if(tf == null){

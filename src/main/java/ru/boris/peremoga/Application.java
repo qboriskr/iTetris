@@ -9,6 +9,7 @@ import burlap.mdp.singleagent.environment.Environment;
 import burlap.mdp.singleagent.environment.SimulatedEnvironment;
 import burlap.statehashing.simple.SimpleHashableStateFactory;
 import ru.boris.peremoga.core.Game;
+import ru.boris.peremoga.core.Hero;
 import ru.boris.peremoga.core.Strategy;
 import ru.boris.peremoga.core.World;
 import ru.boris.peremoga.swing.DisplayMetricsWindowed640;
@@ -31,11 +32,15 @@ public class Application {
 
         Episode ep = null;
         for (int i = 0; i < 1000; i++) {
+            Hero hero = new Hero(new Point(1, 8));
+            world.setHero(hero);
             ep = agent.runLearningEpisode(env);
             System.out.println(ep.actionString());
             env.resetEnvironment();
+            if (i > 100) {
+                play(world, ep);
+            }
         }
-        play(world, ep);
     }
 
     private static GridWorldTerminalFunction findTerminalState(World world) {
@@ -60,7 +65,7 @@ public class Application {
         UiEngine engine = new SwingEngine(new DisplayMetricsWindowed640());
         engine.setMapScale(1);
         Game game = new Game(world, strategy, engine);
-        while (!game.isFinished()) {
+        while (!game.isFinished() || !strategy.isFinished()) {
             game.show();
             game.checkState();
             game.tick();

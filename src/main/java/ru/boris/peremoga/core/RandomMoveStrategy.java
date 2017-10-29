@@ -9,6 +9,11 @@ public class RandomMoveStrategy implements Strategy {
     }
 
     @Override
+    public boolean isFinished() {
+        return false;
+    }
+
+    @Override
     public Move getMove(World w) {
         return Move.values()[random.nextInt(Move.values().length)];
     }

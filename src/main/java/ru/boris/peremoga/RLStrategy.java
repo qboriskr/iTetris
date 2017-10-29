@@ -20,13 +20,18 @@ public class RLStrategy implements Strategy {
     }
 
     @Override
+    public boolean isFinished() {
+        return t >= ep.numTimeSteps();
+    }
+
+    @Override
     public Move getMove(World w) {
         if(t>=ep.numTimeSteps()) {
-            try {
+            /*try {
                 Thread.sleep(Integer.MAX_VALUE);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
         else {
             System.out.println("Step " + t + " of " + ep.numTimeSteps());
@@ -38,6 +43,7 @@ public class RLStrategy implements Strategy {
     }
 
     /*
+    тут у нас не получилось с командами - кажется ошибка в маппинге, перепутались left&right...
 
     @Override
     public Move getMove() {
