@@ -99,11 +99,11 @@ public class World implements DomainGenerator {
             case Down:
                 result.y++;
                 break;
-            case Right:
-                result.x++;
-                break;
             case Left:
                 result.x--;
+                break;
+            case Right:
+                result.x++;
                 break;
         }
         return result;
@@ -237,11 +237,11 @@ public class World implements DomainGenerator {
                     break;
 
                 case 2:
-                    result = new int[]{1,0};
+                    result = new int[]{-1,0};
                     break;
 
                 case 3:
-                    result = new int[]{-1,0};
+                    result = new int[]{1,0};
                     break;
 
                 default:

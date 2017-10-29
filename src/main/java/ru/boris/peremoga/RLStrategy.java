@@ -21,49 +21,39 @@ public class RLStrategy implements Strategy {
 
     @Override
     public boolean isFinished() {
-        return t >= ep.numTimeSteps();
+        return t >= ep.numActions();
     }
 
     @Override
     public Move getMove(World w) {
-        if(t>=ep.numTimeSteps()) {
-            /*try {
-                Thread.sleep(Integer.MAX_VALUE);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
-        }
-        else {
-            System.out.println("Step " + t + " of " + ep.numTimeSteps());
+        if (t < ep.numActions()) {
+            Point p = w.getHero().getCurrentPosition();
+            //System.out.println("Action " + t + " of " + ep.numActions() + ": " + ep.action(t).actionName());
+            //System.out.println("Hero x="+p.x+", y="+p.y);
             GridWorldState s = (GridWorldState)ep.state(t);
-            w.getHero().setCurrentPosition(new Point(s.agent.x, s.agent.y));
+            //System.out.println("State x="+s.agent.x+", y="+s.agent.y);
+            //w.getHero().setCurrentPosition(new Point(s.agent.x, s.agent.y));
+            int actionIndex = World.actionInd(ep.action(t).actionName());
             t++;
+            return World.actionIndToMove(actionIndex);
+        } else {
+            t++;
+            return Move.None;
+        }
+    }
+
+    @Deprecated
+    public Move getMoveOld(World w) {
+        if (t < ep.numTimeSteps()) {
+            //Point p = w.getHero().getCurrentPosition();
+            //System.out.println("Step " + t + " of " + ep.numTimeSteps() + ": " + ep.action(t).actionName());
+            //System.out.println("Hero x="+p.x+", y="+p.y);
+            GridWorldState s = (GridWorldState) ep.state(t);
+            w.getHero().setCurrentPosition(new Point(s.agent.x, s.agent.y));
+            int actionIndex = World.actionInd(ep.action(t).actionName());
+            t++;
+            return World.actionIndToMove(actionIndex);
         }
         return Move.None;
     }
-
-    /*
-    тут у нас не получилось с командами - кажется ошибка в маппинге, перепутались left&right...
-
-    @Override
-    public Move getMove() {
-        System.out.println("Step " + t + " of " + ep.numActions());
-
-        //System.out.println(ep.stateSequence);
-        GridWorldState s = (GridWorldState)ep.state(t));
-        System.out.println(s.agent.x);
-
-        if(t>=ep.numActions()) {
-            try {
-                Thread.sleep(Integer.MAX_VALUE);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return Move.None;
-        }
-        int actionIndex = World.actionInd(ep.action(t).actionName());
-        t++;
-        return World.actionIndToMove(actionIndex);
-    }
-     */
 }
