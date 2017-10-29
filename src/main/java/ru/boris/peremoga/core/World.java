@@ -67,12 +67,12 @@ public class World implements DomainGenerator {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
             {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-            {1, 0, 0, 0, 3, 0, 0, 0, 0, 1},
-            {1, 0, 0, 1, 1, 1, 0, 0, 0, 1},
+            {1, 0, 0, 1, 1, 1, 1, 0, 0, 1},
+            {1, 0, 0, 0, 0, 0, 1, 0, 0, 1},
+            {1, 0, 1, 1, 0, 1, 1, 1, 0, 1},
             {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-            {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-            {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-            {1, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+            {1, 0, 1, 0, 0, 1, 0, 0, 0, 1},
+            {1, 0, 1, 0, 0, 1, 3, 0, 0, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
     };
 
@@ -342,6 +342,8 @@ public class World implements DomainGenerator {
                  */
                 nx = ax;
                 ny = ay;
+            } else if (map[ny][nx] == 3) {
+                System.out.println("Exit found!");
             }
 
             GridAgent nagent = gws.touchAgent();
@@ -421,7 +423,7 @@ public class World implements DomainGenerator {
                 new UniversalActionType(Move.Left.toString()),
                 new UniversalActionType(Move.Right.toString()));
 
-        //???????? OODomain.Helper.addPfsToDomain(domain, this.generatePfs());
+//        OODomain.Helper.addPfsToDomain(domain, this.generatePfs());
         return domain;
     }
 

@@ -36,7 +36,7 @@ public class Game {
 
     public void tick() {
         tickCount++;
-        Move m = s.getMove();
+        Move m = s.getMove(w);
         w.move(m);
         System.out.println(m);
     }
@@ -61,7 +61,7 @@ public class Game {
                 int y = wy + windowCorner.y;
                 int x = wx + windowCorner.x;
 
-                ObjectId obj = getObjectBy(w.getAreaItem(x, y));
+                ObjectId obj = getObjectBy(w.getAreaItem(y, x));
                 if (currentPosition.x == x && currentPosition.y == y) obj = ObjectId.HUMAN_CIVILIAN;
                 ui.draw(wy, wx, obj);
             }

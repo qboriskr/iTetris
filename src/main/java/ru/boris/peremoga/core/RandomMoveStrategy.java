@@ -9,7 +9,7 @@ public class RandomMoveStrategy implements Strategy {
     }
 
     @Override
-    public Move getMove() {
+    public Move getMove(World w) {
         return Move.values()[random.nextInt(Move.values().length)];
     }
 
