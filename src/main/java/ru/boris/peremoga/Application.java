@@ -30,7 +30,7 @@ public class Application {
         QLearning agent = new QLearning(domain, 0.99, new SimpleHashableStateFactory(), 1.0, 1.0);
 
         Episode ep = null;
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             ep = agent.runLearningEpisode(env);
             System.out.println(ep.actionString());
             env.resetEnvironment();
@@ -47,7 +47,6 @@ public class Application {
             }
         }
         throw new RuntimeException("Terminal state not found!");
-
     }
 
     private static GridWorldState findBeginState(World world) {

@@ -78,6 +78,10 @@ public class Game {
                 return ObjectId.HUMAN_CIVILIAN;
             case 3:
                 return ObjectId.DOOR;
+            case 4:
+                return ObjectId.TREE;
+            case 5:
+                return ObjectId.ALIEN;
         }
         return ObjectId.EMPTY;
     }
